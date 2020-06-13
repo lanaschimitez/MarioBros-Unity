@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7964918134937245764}
   - component: {fileID: 5375721939377271024}
   - component: {fileID: 1865328078308262657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pipe3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3125,6 +3125,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
