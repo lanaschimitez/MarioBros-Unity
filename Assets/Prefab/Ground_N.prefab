@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4949958493063148806}
   - component: {fileID: 835499407529848696}
   - component: {fileID: 5927898171885943223}
-  - component: {fileID: 6763157690512390012}
+  - component: {fileID: -8805904435630947323}
   m_Layer: 8
-  m_Name: Ground Negative
+  m_Name: Ground_N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,8 +297,8 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!64 &6763157690512390012
-MeshCollider:
+--- !u!65 &-8805904435630947323
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -307,7 +307,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
