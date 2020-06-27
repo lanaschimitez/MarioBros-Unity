@@ -63,8 +63,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\CameraMoviment.cs" />
-    <Compile Include="Assets\Script\PlayerMovement.cs" />
+    <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Script\UIs\ChronometerUI.cs" />
+    <Compile Include="Assets\Script\UIs\CoinUI.cs" />
+    <Compile Include="Assets\Script\UIs\LifeUI.cs" />
+    <Compile Include="Assets\Script\UIs\ScoreUI.cs" />
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>C:/Users/LanaEduardaSchimitez/Documents/GitHub/Projeto Mario/MarioBros-Unity/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
