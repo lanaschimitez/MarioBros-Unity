@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\BreakableBrick.cs" />
     <Compile Include="Assets\Script\Brick.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\UIs\ChronometerUI.cs" />
