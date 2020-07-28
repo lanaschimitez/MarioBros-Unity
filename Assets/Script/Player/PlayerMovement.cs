@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource m_Audio;
     public AudioClip JumpSmall;
     public AudioClip JumpSuper;
+    [Header("Animations")]
+    public Animator m_anim;
     private void Start()
     {
         m_Body = GetComponent<Rigidbody>();
@@ -48,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
             m_IsJumping = true;
             m_JumpElapsedTime = 0;
         }
+        m_anim.SetBool("Moving", Mathf.Abs(m_Movement.x) > 0);
+        m_anim.SetBool("IsGrounded", m_IsGrounded);
+        m_anim.SetBool("Running", m_IsRunning && Mathf.Abs(m_Movement.x) > 0);
     }
 
     private void FixedUpdate()
@@ -59,19 +64,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if(m_IsJumping && m_JumpElapsedTime > (m_JumpTime/ 3)){
-            if(Input.GetButton("Jump"))
+        if (m_IsJumping && m_JumpElapsedTime > (m_JumpTime / 3))
+        {
+            if (Input.GetButton("Jump"))
             {
-                if(!m_Audio.isPlaying){
+                if (!m_Audio.isPlaying)
+                {
                     m_Audio.clip = JumpSuper;
                     m_Audio.Play();
                 }
-                
+
             }
             else
             {
-                m_IsJumping = false;            
-                if(!m_Audio.isPlaying){
+                m_IsJumping = false;
+                if (!m_Audio.isPlaying)
+                {
                     m_Audio.clip = JumpSmall;
                     m_Audio.Play();
                 }
@@ -83,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             m_JumpElapsedTime += Time.fixedDeltaTime;
             float proportionCompleted = Mathf.Clamp01(m_JumpElapsedTime / m_JumpTime);
             float currentForce = Mathf.Lerp(m_JumpForce, 0.0f, proportionCompleted);
-            
+
             m_Body.AddForce(Vector3.up * currentForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
         else
@@ -96,13 +104,13 @@ public class PlayerMovement : MonoBehaviour
     {
         float speed = m_IsRunning ? m_SpeedRun : m_SpeedMove;
         m_Body.MovePosition(m_Body.position + m_Movement * speed * Time.fixedDeltaTime);
-        
+
     }
 
     private void Rotate()
     {
         if (m_Movement.sqrMagnitude > 0.001f)
-        { 
+        {
             var forwardRotation = Quaternion.Euler(0, -90, 0) * Quaternion.LookRotation(m_Movement);
             m_Body.MoveRotation(Quaternion.Slerp(m_Body.rotation, forwardRotation, m_SpeedRotation * Time.fixedDeltaTime));
         }
