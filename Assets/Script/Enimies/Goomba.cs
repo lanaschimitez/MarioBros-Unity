@@ -13,10 +13,11 @@ public class Goomba : MonoBehaviour
     public float m_ImpulseFoce = 5.0f;
     public int m_Score = 100;
     private bool m_Died;
+    public GameObject GoombaAvatar;
     void Start()
     {
         m_Body = GetComponent<Rigidbody>();
-        m_Body.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        m_Body.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -38,11 +39,13 @@ public class Goomba : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //ativar animacao amassando o bixinho e marcar ponto
+
         //criar game manager
         
         if (other.tag.Contains("Player"))
         {
             m_Died = true;
+            GoombaAvatar.transform.localScale = new Vector2(1, 0.4f);
             Rigidbody body = other.GetComponent<Rigidbody>();
             Vector3 velocity = body.velocity;
             velocity.y = 0.0f;

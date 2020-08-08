@@ -7,7 +7,7 @@ public class BreakableBrick : MonoBehaviour
     public GameObject m_Explosion;
     private Bounds m_Bounds;
 
-    void Start()
+    private void Start()
     {
         m_Bounds = GetComponent<Collider>().bounds;
     }
