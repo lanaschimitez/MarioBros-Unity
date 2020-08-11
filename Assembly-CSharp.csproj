@@ -66,6 +66,7 @@
     <Compile Include="Assets\Script\BreakableBrick.cs" />
     <Compile Include="Assets\Script\Brick.cs" />
     <Compile Include="Assets\Script\Enimies\Goomba.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\UIs\ChronometerUI.cs" />
     <Compile Include="Assets\Script\UIs\CoinUI.cs" />
