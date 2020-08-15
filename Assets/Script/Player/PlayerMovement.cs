@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float m_SpeedMove = 5.0f;
     public float m_SpeedRun = 15.0f;
     public float m_SpeedRotation = 15.0f;
-    private bool m_IsRunning;
+    public bool m_IsRunning;
 
     [Header("Jump")]
     public float m_JumpForce = 6.5f;

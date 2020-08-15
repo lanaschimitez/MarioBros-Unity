@@ -8,10 +8,18 @@ public class GameManager : MonoBehaviour
     public int m_life;
     public bool m_isDead;
     public LifeUI lifeUI;
+    public bool m_isSmall;
+    public GameObject m_MarioSmall;
+    public GameObject m_MarioBig;
+    public Animator animator;
+    public Avatar MarioBigAvatar;
+    public Avatar MarioSmallAvatar;
+
     // Start is called before the first frame update
     void Start()
     {
         lifeUI = GameObject.Find("LifeText").GetComponent<LifeUI>();
+
         //controlar as moedas
         //controlar as mortes
         //controlar os pontos
@@ -24,8 +32,55 @@ public class GameManager : MonoBehaviour
         // verificar a morte do Player
     }
 
+    public void MarioBig()
+    {
+        //GetComponent<PlayerMovement>().m_IsRunning = true;
+        animator.avatar = MarioBigAvatar;
+        gameObject.tag = "BigPlayer";
+        m_isSmall = false;
+        m_MarioSmall.SetActive(false);
+        m_MarioBig.SetActive(true);
+    }
+
+    public void MarioSmall()
+    {
+        //GetComponent<PlayerMovement>().m_IsRunning = false;
+        animator.avatar = MarioSmallAvatar;
+        gameObject.tag = "SmallPlayer";
+        m_isSmall = true;
+        m_MarioSmall.SetActive(true);
+        m_MarioBig.SetActive(false);
+    }
+
     public void Dead()
     {
-        lifeUI.LifeDown();
+        if (m_isSmall)
+        {
+            lifeUI.LifeDown();
+            //animacao de morte e mudaça de posição
+        }
+        else
+        {
+            MarioSmall();
+        }
+    }
+
+    public void Life()
+    {
+        lifeUI.LifeUp();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "UpMushroom") 
+        {
+            Life();
+            Destroy(collision.gameObject);
+        }
+        else if(collision.gameObject.tag == "SuperMushroom")
+        {
+            if (m_isSmall) MarioBig();
+            Destroy(collision.gameObject);
+        }
     }
 }

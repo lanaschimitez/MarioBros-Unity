@@ -6,6 +6,10 @@ TagManager:
   tags:
   - BigPlayer
   - Gound
+  - Starman
+  - UpMushroom
+  - SuperMushroom
+  - SmallPlayer
   layers:
   - Default
   - TransparentFX
