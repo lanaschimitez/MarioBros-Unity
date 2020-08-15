@@ -10,6 +10,7 @@ TagManager:
   - UpMushroom
   - SuperMushroom
   - SmallPlayer
+  - Coin
   layers:
   - Default
   - TransparentFX

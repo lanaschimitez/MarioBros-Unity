@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int m_life;
     public bool m_isDead;
     public LifeUI lifeUI;
+    public CoinUI coinUI;
     public bool m_isSmall;
     public GameObject m_MarioSmall;
     public GameObject m_MarioBig;
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         lifeUI = GameObject.Find("LifeText").GetComponent<LifeUI>();
+        coinUI = GameObject.Find("CoinText").GetComponent<CoinUI>();
 
         //controlar as moedas
         //controlar as mortes
@@ -72,14 +73,19 @@ public class GameManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "UpMushroom") 
+        if(collision.gameObject.CompareTag("UpMushroom")) 
         {
             Life();
             Destroy(collision.gameObject);
         }
-        else if(collision.gameObject.tag == "SuperMushroom")
+        else if(collision.gameObject.CompareTag("SuperMushroom"))
         {
             if (m_isSmall) MarioBig();
+            Destroy(collision.gameObject);
+        }
+        else if(collision.gameObject.CompareTag("Coin"))
+        {
+            coinUI.AddCoins(1);
             Destroy(collision.gameObject);
         }
     }

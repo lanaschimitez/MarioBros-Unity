@@ -68,10 +68,13 @@
     <Compile Include="Assets\Script\Enimies\Goomba.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Script\SupriseBox.cs" />
     <Compile Include="Assets\Script\UIs\ChronometerUI.cs" />
+    <Compile Include="Assets\Script\UIs\CoinMovement.cs" />
     <Compile Include="Assets\Script\UIs\CoinUI.cs" />
     <Compile Include="Assets\Script\UIs\LifeUI.cs" />
     <Compile Include="Assets\Script\UIs\ScoreUI.cs" />
+    <None Include="Assets\Models\Coin\No Credit needed.txt" />
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>C:/Users/LanaEduardaSchimitez/Documents/GitHub/Projeto Mario/MarioBros-Unity/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
