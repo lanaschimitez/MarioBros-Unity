@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviour
     public Animator animator;
     public Avatar MarioBigAvatar;
     public Avatar MarioSmallAvatar;
+    private Vector3 m_StartingPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_StartingPosition = gameObject.transform.position;
         lifeUI = GameObject.Find("LifeText").GetComponent<LifeUI>();
         coinUI = GameObject.Find("CoinText").GetComponent<CoinUI>();
 
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour
         {
             MarioSmall();
         }
+        transform.position = m_StartingPosition;
     }
 
     public void Life()
@@ -87,6 +90,10 @@ public class GameManager : MonoBehaviour
         {
             coinUI.AddCoins(1);
             Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Limit"))
+        {
+            Dead();
         }
     }
 }

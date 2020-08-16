@@ -68,6 +68,7 @@
     <Compile Include="Assets\Script\Enimies\Goomba.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Script\PowerUpMoviment.cs" />
     <Compile Include="Assets\Script\SupriseBox.cs" />
     <Compile Include="Assets\Script\UIs\ChronometerUI.cs" />
     <Compile Include="Assets\Script\UIs\CoinMovement.cs" />

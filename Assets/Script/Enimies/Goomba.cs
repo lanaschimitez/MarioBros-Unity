@@ -27,7 +27,7 @@ public class Goomba : MonoBehaviour
 
         if (collision.gameObject.tag.Contains("Player"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<GameManager>().Dead();
             // mario tomar dano 
         }
         else

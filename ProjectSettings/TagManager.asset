@@ -11,6 +11,8 @@ TagManager:
   - SuperMushroom
   - SmallPlayer
   - Coin
+  - Brick
+  - Limit
   layers:
   - Default
   - TransparentFX
