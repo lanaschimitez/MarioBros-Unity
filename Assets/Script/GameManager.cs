@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public bool m_isDead;
     public LifeUI lifeUI;
     public CoinUI coinUI;
+    public ScoreUI scoreUI;
     public bool m_isSmall;
     public GameObject m_MarioSmall;
     public GameObject m_MarioBig;
@@ -20,12 +21,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         m_StartingPosition = gameObject.transform.position;
-        lifeUI = GameObject.Find("LifeText").GetComponent<LifeUI>();
-        coinUI = GameObject.Find("CoinText").GetComponent<CoinUI>();
+        lifeUI = GameObject.Find("LifeText").GetComponent<LifeUI>();        //controlar as mortes
+        coinUI = GameObject.Find("CoinText").GetComponent<CoinUI>();         //controlar as moedas
+        scoreUI = GameObject.Find("ScoreText").GetComponent<ScoreUI>();         //controlar os pontos
 
-        //controlar as moedas
-        //controlar as mortes
-        //controlar os pontos
         //controlar os niveis
     }
 
@@ -60,13 +59,13 @@ public class GameManager : MonoBehaviour
         if (m_isSmall)
         {
             lifeUI.LifeDown();
+            transform.position = m_StartingPosition;
             //animacao de morte e mudaça de posição
         }
         else
         {
             MarioSmall();
         }
-        transform.position = m_StartingPosition;
     }
 
     public void Life()
@@ -86,14 +85,19 @@ public class GameManager : MonoBehaviour
             if (m_isSmall) MarioBig();
             Destroy(collision.gameObject);
         }
-        else if(collision.gameObject.CompareTag("Coin"))
-        {
-            coinUI.AddCoins(1);
-            Destroy(collision.gameObject);
-        }
         else if (collision.gameObject.CompareTag("Limit"))
         {
             Dead();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            scoreUI.AddScore(1);
+            coinUI.AddCoins(1);
+            Destroy(other.gameObject);
         }
     }
 }

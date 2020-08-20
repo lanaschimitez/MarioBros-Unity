@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpMoviment : MonoBehaviour
 {
     [Header("Move")]
-    public float m_SpeedMove = 5.0f;
+    public float m_SpeedMove = 4.5f;
     public Vector3 m_Movement = Vector3.right;
     private Rigidbody m_Body;
 

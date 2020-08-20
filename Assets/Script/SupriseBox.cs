@@ -22,7 +22,7 @@ public class SupriseBox : MonoBehaviour
         {
             if (m_PowerUp)
             {
-                Instantiate(m_PowerUp, new Vector3(transform.position.x + 0.3f, transform.position.y + 0.7f, transform.position.z), Quaternion.Euler(90.0f, 0.0f, -90.0f));
+                Instantiate(m_PowerUp, new Vector3(transform.position.x + 0.3f, transform.position.y + 0.9f, transform.position.z), Quaternion.Euler(90.0f, 0.0f, -90.0f));
             }
             Instantiate(m_EmptyBox, transform.position, Quaternion.identity);
 

@@ -30,6 +30,7 @@ public class ScoreUI : MonoBehaviour
     public void AddScore(int score)
     {
         m_Score += score;
+        UpdateUI();
     }
 
     private void UpdateUI()

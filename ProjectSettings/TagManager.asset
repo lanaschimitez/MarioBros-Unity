@@ -13,6 +13,7 @@ TagManager:
   - Coin
   - Brick
   - Limit
+  - Pole
   layers:
   - Default
   - TransparentFX
