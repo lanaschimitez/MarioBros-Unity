@@ -59,7 +59,8 @@ public class GameManager : MonoBehaviour
         if (m_isSmall)
         {
             lifeUI.LifeDown();
-            transform.position = m_StartingPosition;
+            StartCoroutine(AnimDeath());
+            //transform.position = m_StartingPosition;
             //animacao de morte e mudaça de posição
         }
         else
@@ -99,5 +100,32 @@ public class GameManager : MonoBehaviour
             coinUI.AddCoins(1);
             Destroy(other.gameObject);
         }
+    }
+
+    public IEnumerator AnimDeath()
+    {
+        print(Time.time);
+        float time = 10.0f;
+        foreach (Transform t in m_MarioSmall.transform)
+        {
+            if (t.GetComponent<SkinnedMeshRenderer>())
+            {
+                t.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            }
+
+        }
+        for (int i = 0; i < time; i++)
+        {
+                time -= Time.deltaTime;
+
+        }
+        yield return new WaitForSecondsRealtime(10);
+        m_MarioSmall.SetActive(true);
+
+    }
+    public IEnumerator AnimDeath2()
+    {
+        yield return new WaitForSecondsRealtime(10);
+        m_MarioSmall.SetActive(true);
     }
 }
