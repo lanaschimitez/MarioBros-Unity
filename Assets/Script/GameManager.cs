@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEditor.Android;
 using UnityEngine;
 
@@ -59,13 +60,13 @@ public class GameManager : MonoBehaviour
         if (m_isSmall)
         {
             lifeUI.LifeDown();
-            StartCoroutine(AnimDeath());
-            //transform.position = m_StartingPosition;
+            transform.position = m_StartingPosition;
             //animacao de morte e mudaça de posição
         }
         else
         {
             MarioSmall();
+            StartCoroutine(ChangeMario());
         }
     }
 
@@ -76,12 +77,12 @@ public class GameManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("UpMushroom")) 
+        if (collision.gameObject.CompareTag("UpMushroom"))
         {
             Life();
             Destroy(collision.gameObject);
         }
-        else if(collision.gameObject.CompareTag("SuperMushroom"))
+        else if (collision.gameObject.CompareTag("SuperMushroom"))
         {
             if (m_isSmall) MarioBig();
             Destroy(collision.gameObject);
@@ -102,30 +103,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator AnimDeath()
+    //usar quando o BigMario ser atingido e precisar mudar de corpo
+    public IEnumerator ChangeMario()
     {
-        print(Time.time);
-        float time = 10.0f;
-        foreach (Transform t in m_MarioSmall.transform)
+        float counter = 0;
+        float waitTime = 12.0f;
+        bool active = false;
+        while (counter < waitTime)
         {
-            if (t.GetComponent<SkinnedMeshRenderer>())
+            foreach (Transform t in m_MarioSmall.transform)
             {
-                t.GetComponent<SkinnedMeshRenderer>().enabled = false;
+                if (t.GetComponent<SkinnedMeshRenderer>())
+                {
+                    t.GetComponent<SkinnedMeshRenderer>().enabled = active;
+                }
             }
-
+            active ^= true;
+            yield return new WaitForSecondsRealtime(0.25f);
+            //Increment Timer until counter >= waitTime
+            counter++;
         }
-        for (int i = 0; i < time; i++)
-        {
-                time -= Time.deltaTime;
-
-        }
-        yield return new WaitForSecondsRealtime(10);
-        m_MarioSmall.SetActive(true);
-
-    }
-    public IEnumerator AnimDeath2()
-    {
-        yield return new WaitForSecondsRealtime(10);
         m_MarioSmall.SetActive(true);
     }
 }
