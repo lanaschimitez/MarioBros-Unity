@@ -816,6 +816,7 @@ MonoBehaviour:
   m_SpeedMove: 6
   m_SpeedRun: 10
   m_SpeedRotation: 15
+  m_IsRunning: 0
   m_JumpForce: 230
   m_JumpTime: 0.33
   m_GroundDistance: 0.15
