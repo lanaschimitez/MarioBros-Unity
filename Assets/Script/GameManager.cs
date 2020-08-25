@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         {
             lifeUI.LifeDown();
             transform.position = m_StartingPosition;
+            StartCoroutine(ChangeMario());
             //animacao de morte e mudaça de posição
         }
         else
