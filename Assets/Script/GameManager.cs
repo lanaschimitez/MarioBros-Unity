@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEditor.Android;
@@ -92,6 +93,16 @@ public class GameManager : MonoBehaviour
         {
             Dead();
         }
+        else if (collision.gameObject.CompareTag("Pole"))
+        {
+            PoleAnim();
+        }
+    }
+
+    private void PoleAnim()
+    {
+        gameObject.GetComponent<PlayerMovement>().enabled = false;
+        gameObject.GetComponent<Rigidbody>().useGravity = false;
     }
 
     private void OnTriggerEnter(Collider other)
